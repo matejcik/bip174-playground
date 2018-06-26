@@ -1,0 +1,37 @@
+syntax = "proto2";
+
+package bip174;
+
+message PartialSignature {
+    optional bytes public_key = 1;
+    optional bytes signature = 2;
+}
+
+message BIP32Derivation {
+    optional bytes master_pubkey = 1;
+    repeated fixed32 path = 2 [packed=true];
+}
+
+message InputType {
+    optional bytes non_witness_utxo = 1;
+    optional bytes witness_utxo = 2;
+    optional PartialSignature partial_signature = 3;
+    optional uint32 sighash_type = 4;
+    optional bytes redeem_script = 5;
+    optional bytes witness_script = 6;
+    repeated BIP32Derivation bip32_path = 7;
+    optional bytes finalized_scriptsig = 8;
+    optional bytes finalized_scriptwitness = 9;
+}
+
+message OutputType {
+    optional bytes redeem_script = 1;
+    optional bytes witness_script = 2;
+    repeated BIP32Derivation bip32_path = 3;
+}
+
+message PSBT {
+    optional bytes unsigned_transaction = 1;
+    repeated InputType inputs = 2;
+    repeated OutputType outputs = 3;
+}
