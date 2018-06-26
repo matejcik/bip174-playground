@@ -23,3 +23,7 @@ Feed one of the test vectors (taken from [here](https://github.com/achow101/bips
 ```sh
 python3 analyze.py < case-sighash.hex
 ```
+
+## Licence
+
+All code is covered by LGPLv3.
